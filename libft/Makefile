@@ -6,7 +6,7 @@
 #    By: rsmith <rsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/12 16:46:59 by ssettle           #+#    #+#              #
-#    Updated: 2019/07/08 11:16:15 by rsmith           ###   ########.fr        #
+#    Updated: 2019/07/08 14:15:51 by rsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,6 @@ ft_tolower.c\
 ft_toupper.c\
 ft_wordcount.c\
 ft_wordlen.c\
-ft_abs.c\
 ft_lstcount.c\
 ft_lstrev.c\
 ft_splitdel.c\
@@ -144,7 +143,6 @@ ft_tolower.o\
 ft_toupper.o\
 ft_wordcount.o\
 ft_wordlen.o\
-ft_abs.o\
 ft_lstcount.o\
 ft_lstrev.o\
 ft_splitdel.o\

@@ -6,31 +6,11 @@
 /*   By: rsmith <rsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 17:12:44 by rsmith            #+#    #+#             */
-/*   Updated: 2019/07/03 18:07:01 by rsmith           ###   ########.fr       */
+/*   Updated: 2019/07/17 13:15:41 by rsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	change_colour(t_mlx *mlx)
-{
-	int colour;
-	int i;
-
-	i = 0;
-	while (mlx->map->points[i])
-	{
-		colour = mlx->map->points[i]->colour;
-		if (colour + 0x0F0000 > 0xFFFFFF)
-			colour = 0x2F2F2F - (0xFFFFFF - colour);
-		else
-			colour += 0xA00000;
-		mlx->map->points[i]->colour = colour;
-		i++;
-	}
-	mlx_clear_window(mlx, mlx->window);
-	render(mlx);
-}
 
 void	plotline(t_mlx *mlx, t_point p1, t_point p2)
 {
@@ -42,9 +22,9 @@ void	plotline(t_mlx *mlx, t_point p1, t_point p2)
 	p2.y = (int)p2.y;
 	line.start = p1;
 	line.end = p2;
-	line.dx = (int)ft_abs((int)p2.x - (int)p1.x);
+	line.dx = (int)abs((int)p2.x - (int)p1.x);
 	line.sx = (int)p1.x < (int)p2.x ? 1 : -1;
-	line.dy = (int)ft_abs((int)p2.y - (int)p1.y);
+	line.dy = (int)abs((int)p2.y - (int)p1.y);
 	line.sy = (int)p1.y < (int)p2.y ? 1 : -1;
 	line.err = (line.dx > line.dy ? line.dx : -line.dy) / 2;
 	while (((int)p1.x != (int)p2.x || (int)p1.y != (int)p2.y))
@@ -77,16 +57,36 @@ t_point	rotate(t_point p, t_cam *r)
 	return (tmp);
 }
 
+void	change_colour(t_mlx *mlx)
+{
+	int colour;
+	int i;
+
+	i = 0;
+	while (mlx->map->points[i])
+	{
+		colour = mlx->map->points[i]->colour;
+		if (colour + 0x0F0000 > 0xFFFFFF)
+			colour = 0x2F0F2F - (0xFFFFFF - colour);
+		else
+			colour += 0xA00000;
+		mlx->map->points[i]->colour = colour;
+		i++;
+	}
+	mlx_clear_window(mlx, mlx->window);
+	render(mlx);
+}
+
 void	print_help(t_mlx *mlx)
 {
 	mlx_string_put(mlx->mlx, mlx->window, 42, 42, 0xFFFFFF, "Controls");
 	mlx_string_put(mlx->mlx, mlx->window, 42, 72, 0xFFFFFF,
-	"Rotate: Click and Drag");
+	"Click and drag to to rotate");
 	mlx_string_put(mlx->mlx, mlx->window, 42, 102, 0xFFFFFF,
-	"Move: Click and Drag While Holding CTRL");
-	mlx_string_put(mlx->mlx, mlx->window, 42, 132, 0xFFFFFF,
-	"Change Colour: Space");
+	"CTRL + Mouse to drag");
 	mlx_string_put(mlx->mlx, mlx->window, 42, 162, 0xFFFFFF, "Zoom: +/-");
+	mlx_string_put(mlx->mlx, mlx->window, 42, 132, 0xFFFFFF,
+	"'C' to change colors");
 	mlx_string_put(mlx->mlx, mlx->window, 42, 192, 0xFFFFFF, "Quit: ESC");
 }
 

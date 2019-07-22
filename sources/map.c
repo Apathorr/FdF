@@ -6,13 +6,13 @@
 /*   By: rsmith <rsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 16:57:08 by rsmith            #+#    #+#             */
-/*   Updated: 2019/06/27 17:12:13 by rsmith           ###   ########.fr       */
+/*   Updated: 2019/07/17 13:24:45 by rsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point		project_point(t_point p, t_mlx *mlx)
+t_point	project_point(t_point p, t_mlx *mlx)
 {
 	p.x -= (double)(mlx->map->width - 1) / 2.0f;
 	p.y -= (double)(mlx->map->height - 1) / 2.0f;
@@ -27,10 +27,10 @@ t_point		project_point(t_point p, t_mlx *mlx)
 
 t_point	find_point(t_map *map, int x, int y)
 {
-	return (*map->points[y *map->width + x]);
+	return (*map->points[y * map->width + x]);
 }
 
-t_point		*get_point(int x, int y, char *str)
+t_point	*get_point(int x, int y, char *str)
 {
 	t_point	*point;
 
@@ -44,7 +44,7 @@ t_point		*get_point(int x, int y, char *str)
 	return (point);
 }
 
-t_map		*get_map(int width, int height)
+t_map	*get_map(int width, int height)
 {
 	t_map	*map;
 

@@ -6,34 +6,32 @@
 /*   By: rsmith <rsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 12:24:25 by rsmith            #+#    #+#             */
-/*   Updated: 2019/07/08 12:30:17 by rsmith           ###   ########.fr       */
+/*   Updated: 2019/07/17 13:30:39 by rsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-/* free up memory if the map cannot be retrieved */
-
-static int		cleanup(t_list **list, t_map **map)
+static int	cleanup(t_list **list, t_map **map)
 {
-		t_list *next;
+	t_list *next;
 
-		while (*list)
-		{
-			next = (*list) ->next;
-			ft_memdel(&(*list)->content);
-			ft_memdel((void**)list);
-			*list = next;
-		}
-		if (map && *map)
-		{
-			ft_memdel((void **)&(*map)->points);
-			ft_memdel((void **)map);
-		}
-		return (0);
+	while (*list)
+	{
+		next = (*list)->next;
+		ft_memdel(&(*list)->content);
+		ft_memdel((void**)list);
+		*list = next;
+	}
+	if (map && *map)
+	{
+		ft_memdel((void **)&(*map)->points);
+		ft_memdel((void **)map);
+	}
+	return (0);
 }
 
-static int		get_lines(int fd, t_list **list)
+static int	get_lines(int fd, t_list **list)
 {
 	t_list	*tmp;
 	int		expected;
@@ -47,7 +45,7 @@ static int		get_lines(int fd, t_list **list)
 			expected = (int)ft_wordcount(line, ' ');
 		tmp = ft_lstnew(line, ft_strlen(line) + 1);
 		if (tmp == NULL)
-			return(cleanup(list, NULL));
+			return (cleanup(list, NULL));
 		ft_lstadd(list, tmp);
 		if (expected != (int)ft_wordcount(line, ' '))
 			return (cleanup(list, NULL));
@@ -59,7 +57,7 @@ static int		get_lines(int fd, t_list **list)
 	return (1);
 }
 
-void	find_depth(t_map *map)
+void		find_depth(t_map *map)
 {
 	int		min;
 	int		max;

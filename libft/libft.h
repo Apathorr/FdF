@@ -44,8 +44,6 @@ char			*ft_strtrim(char const *s);
 char			*ft_strncat(char *s2, const char *s1, size_t n);
 char			*ft_strnstr(const char *hay, const char *need, size_t len);
 
-
-int				ft_abs(int i);
 int				ft_atoi(const char *str);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);

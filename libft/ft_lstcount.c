@@ -6,7 +6,7 @@
 /*   By: rsmith <rsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 18:29:08 by rsmith            #+#    #+#             */
-/*   Updated: 2019/07/03 18:30:36 by rsmith           ###   ########.fr       */
+/*   Updated: 2019/07/08 13:06:22 by rsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ size_t	ft_lstcount(t_list *lst)
 		lst = lst->next;
 		i++;
 	}
-	return (1);
+	return (i);
 }

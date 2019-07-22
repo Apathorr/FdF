@@ -6,7 +6,7 @@
 /*   By: rsmith <rsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 14:20:02 by rsmith            #+#    #+#             */
-/*   Updated: 2019/07/03 16:22:51 by rsmith           ###   ########.fr       */
+/*   Updated: 2019/07/17 13:12:26 by rsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		hook_key(int key, t_mlx *mlx)
 {
 	(void)mlx;
-	if (key == 27)
+	if (key == 53)
 		exit(0);
 	if (key == 69)
 	{
@@ -31,10 +31,10 @@ int		hook_key(int key, t_mlx *mlx)
 		mlx_clear_window(mlx, mlx->window);
 		render(mlx);
 	}
-	else if (key == 49)
+	else if (key == 8)
 		change_colour(mlx);
 	mlx->button = key;
-	return(0);
+	return (0);
 }
 
 int		key_release(int key, t_mlx *mlx)
@@ -85,5 +85,5 @@ int		hook_mouse_move(int x, int y, t_mlx *mlx)
 		mlx_clear_window(mlx, mlx->window);
 		render(mlx);
 	}
-	return(0);
+	return (0);
 }

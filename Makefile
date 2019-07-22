@@ -6,11 +6,11 @@
 #    By: rsmith <rsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/26 14:26:46 by rsmith            #+#    #+#              #
-#    Updated: 2019/07/08 12:27:33 by rsmith           ###   ########.fr        #
+#    Updated: 2019/07/18 14:46:00 by rsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = FdF
+NAME = fdf
 
 SRCDIR = ./sources/
 
@@ -54,6 +54,6 @@ fclean : clean
 	rm -rf $(NAME)
 	make -C libft fclean
 
-re: clean all
+re: fclean all
 
  .PHONY: make, all, clean, fclean, re
